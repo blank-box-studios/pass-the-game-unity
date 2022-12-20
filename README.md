@@ -1,0 +1,1 @@
+This is a game made without communicating with each other using Unity. Each person has an hour to work on it each day and can only work on it when the other person is not. Sequentially and not parallelly, if you'd like to think that way. We hope this helps us learn to be more adaptive and makes us learn skills we usually don't use.

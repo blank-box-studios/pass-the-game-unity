@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerInteractionScript : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] float dragDistance, draggedDistance;
-    [SerializeField] bool isDragging, initialPositionSet;
+    [SerializeField] Rigidbody2D playerRb;
+    [SerializeField] float dragDistance;
+    [SerializeField] bool isDragging;
     Vector2 lastPosition;
 
     [SerializeField] Transform pullIndicatorObject, gfx;
@@ -21,17 +21,14 @@ public class PlayerInteractionScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pullBack(); //Function that pulls back the object to determine strength of push through mouse drag
+        calculateDragDistance(); //Function that pulls back the object to determine strength of push through mouse drag
         rotateIndicator();
-
     }
 
-    void addForce()
+    void addForce(float draggedDistance)
     {
         Vector3 dir = Quaternion.AngleAxis(angleForForce, Vector3.forward) * Vector3.right;
-        rb.AddForce(-dir * draggedDistance / 10);
-
-
+        playerRb.AddForce(-dir * draggedDistance);
     }
 
     void rotateIndicator()
@@ -51,32 +48,19 @@ public class PlayerInteractionScript : MonoBehaviour
         gfx.localScale = new Vector3(0.1f, dragDistance / 100.0f, 0);
     }
 
-    void pullBack()
+    void calculateDragDistance()
     {
-
-
         if (Input.GetButtonDown("Fire1"))
         {
             isDragging = true;
-            if (!initialPositionSet)
-            {
-                lastPosition = Input.mousePosition;
-                initialPositionSet = true;
-            }
-
+            lastPosition = Input.mousePosition;
         }
-
         if (Input.GetButtonUp("Fire1"))
         {
             isDragging = false;
             Debug.Log("Mouse moved " + dragDistance + " while button was down.");
-            draggedDistance = dragDistance;
-
+            addForce(dragDistance); // Add force to the object based on the distance dragged
             dragDistance = 0;
-
-            initialPositionSet = false;
-
-            addForce();
         }
 
         if (isDragging)

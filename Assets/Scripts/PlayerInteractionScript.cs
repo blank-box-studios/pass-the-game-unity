@@ -11,7 +11,7 @@ public class PlayerInteractionScript : MonoBehaviour
     
 
 
-
+    
     [SerializeField] Rigidbody2D playerRb;
     [SerializeField] float dragDistance;
     [SerializeField] bool isDragging;
@@ -20,10 +20,14 @@ public class PlayerInteractionScript : MonoBehaviour
     [SerializeField] Transform pullIndicatorObject, gfx;
     [SerializeField] float angleForForce;
 
+    [SerializeField] Transform goal;
+    [SerializeField] float distanceToGoal;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        goal = GameObject.FindGameObjectWithTag("Goal").transform;
     }
 
     // Update is called once per frame
@@ -31,6 +35,13 @@ public class PlayerInteractionScript : MonoBehaviour
     {
         calculateDragDistance(); //Function that pulls back the object to determine strength of push through mouse drag
         rotateIndicator();
+        updateCameraZoom();
+    }
+    
+    void updateCameraZoom()
+    {
+        distanceToGoal = Vector2.Distance(transform.position, goal.position) /2;
+        Camera.main.orthographicSize = Mathf.Clamp(distanceToGoal, 6, 10);
     }
 
     void addForce(float draggedDistance)

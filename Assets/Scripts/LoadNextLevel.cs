@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadNextLevel : MonoBehaviour
 {
 
-    private void onTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Triggered");
         if (other.gameObject.tag == "Player")

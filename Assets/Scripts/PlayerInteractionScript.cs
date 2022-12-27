@@ -8,7 +8,7 @@ public class PlayerInteractionScript : MonoBehaviour
 
     //To be removed.
     public TextMeshProUGUI testDragText;
-    
+
 
 
     [SerializeField] Rigidbody2D playerRb;
@@ -25,29 +25,44 @@ public class PlayerInteractionScript : MonoBehaviour
     [SerializeField] float FuelMax = 100;
     [SerializeField] float FuelCurrent;
 
+    float horizontalmovement;
+
+    int input; // CONSIDERING using this to keep track of inputs. May have to move to an input queue
+
     // Start is called before the first frame update
     void Start()
     {
-
+        input = -1;
         FuelCurrent= FuelMax;
         goal = GameObject.FindGameObjectWithTag("Goal").transform;
     }
 
 
     // Update is called once per frame
+    // CONSIDERING: Getting all the movement queued up in a list, and then processing it in fixed update
     void Update()
     {
-        //if (Input.GetButtonDown("Up"))
+        horizontalmovement = Input.GetAxis("Horizontal");
+        // STUB
+        if (Input.GetButtonDown("Fire1"))
+        {
+            input = 0;
+        }
+        // STUB
+        if (Input.GetButtonUp("Fire1"))
+        {
+            input = 1;
+        }
         
         calculateDragDistance(); //Function that pulls back the object to determine strength of push through mouse drag
         rotateIndicator();
         updateCameraZoom();
     }
 
-    //TODO: Use Fixed Update for physics
+    //TODO: STUB Use Fixed Update for physics
     void FixedUpdate()
     {
-        
+        playerRb.AddForce(Vector2.right * horizontalmovement * .10f, ForceMode2D.Impulse);
     }
     
     void updateCameraZoom()

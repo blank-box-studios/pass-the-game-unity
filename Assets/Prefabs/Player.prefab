@@ -139,6 +139,10 @@ MonoBehaviour:
   pullIndicatorObject: {fileID: 7507998807626390348}
   gfx: {fileID: 7507998806647149257}
   angleForForce: 0
+  goal: {fileID: 0}
+  distanceToGoal: 0
+  FuelMax: 100
+  FuelCurrent: 0
 --- !u!50 &7507998806767248799
 Rigidbody2D:
   serializedVersion: 4
@@ -159,7 +163,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &7507998806767248798
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1710,11 +1710,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7507998806767248796, guid: b2c13c1e788f1d442af35b4790d9309f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7507998806767248796, guid: b2c13c1e788f1d442af35b4790d9309f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7507998806767248796, guid: b2c13c1e788f1d442af35b4790d9309f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1747,6 +1747,10 @@ PrefabInstance:
     - target: {fileID: 7507998806767248796, guid: b2c13c1e788f1d442af35b4790d9309f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7507998806767248799, guid: b2c13c1e788f1d442af35b4790d9309f, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7507998806767248802, guid: b2c13c1e788f1d442af35b4790d9309f, type: 3}
       propertyPath: door

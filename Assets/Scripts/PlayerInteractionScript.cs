@@ -10,7 +10,7 @@ public class PlayerInteractionScript : MonoBehaviour
     public TextMeshProUGUI testDragText;
 
 
-
+    [SerializeField] float walkingSpeed;
     [SerializeField] Rigidbody2D playerRb;
     
     [SerializeField] float dragDistance;
@@ -62,7 +62,9 @@ public class PlayerInteractionScript : MonoBehaviour
     //TODO: STUB Use Fixed Update for physics
     void FixedUpdate()
     {
-        playerRb.AddForce(Vector2.right * horizontalmovement * .10f, ForceMode2D.Impulse);
+        //playerRb.AddForce(Vector2.right * horizontalmovement * .10f, ForceMode2D.Impulse);
+
+        transform.Translate(new Vector3(horizontalmovement * 2 * Time.deltaTime, 0,0));
     }
     
     void updateCameraZoom()

@@ -26,6 +26,7 @@ public class PlayerInteractionScript : MonoBehaviour
     [SerializeField] float FuelCurrent;
 
     float horizontalmovement;
+    bool onGround = false;
 
 
     // Start is called before the first frame update
@@ -41,8 +42,11 @@ public class PlayerInteractionScript : MonoBehaviour
     // CONSIDERING: Getting all the movement queued up in a list, and then processing it in fixed update
     void Update()
     {
-        horizontalmovement = Input.GetAxis("Horizontal");
-    
+        if (onGround)
+        {
+            horizontalmovement = Input.GetAxis("Horizontal");
+            onGround = false;
+        }
         
         calculateDragDistance(); //Function that pulls back the object to determine strength of push through mouse drag
         rotateIndicator();

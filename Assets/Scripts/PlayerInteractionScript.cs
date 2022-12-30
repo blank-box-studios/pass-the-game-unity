@@ -27,12 +27,11 @@ public class PlayerInteractionScript : MonoBehaviour
 
     float horizontalmovement;
 
-    int input; // CONSIDERING using this to keep track of inputs. May have to move to an input queue
 
     // Start is called before the first frame update
     void Start()
     {
-        input = -1;
+        
         FuelCurrent= FuelMax;
         goal = GameObject.FindGameObjectWithTag("Goal").transform;
     }
@@ -43,16 +42,7 @@ public class PlayerInteractionScript : MonoBehaviour
     void Update()
     {
         horizontalmovement = Input.GetAxis("Horizontal");
-        // STUB
-        if (Input.GetButtonDown("Fire1"))
-        {
-            input = 0;
-        }
-        // STUB
-        if (Input.GetButtonUp("Fire1"))
-        {
-            input = 1;
-        }
+    
         
         calculateDragDistance(); //Function that pulls back the object to determine strength of push through mouse drag
         rotateIndicator();
@@ -62,7 +52,6 @@ public class PlayerInteractionScript : MonoBehaviour
     //TODO: STUB Use Fixed Update for physics
     void FixedUpdate()
     {
-        //playerRb.AddForce(Vector2.right * horizontalmovement * .10f, ForceMode2D.Impulse);
 
         transform.Translate(new Vector3(horizontalmovement * 2 * Time.deltaTime, 0,0));
     }

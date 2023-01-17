@@ -1868,6 +1868,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1024328949}
     - target: {fileID: 7507998806767248802, guid: b2c13c1e788f1d442af35b4790d9309f, type: 3}
+      propertyPath: fuelText
+      value: 
+      objectReference: {fileID: 351354866}
+    - target: {fileID: 7507998806767248802, guid: b2c13c1e788f1d442af35b4790d9309f, type: 3}
       propertyPath: testDragText
       value: 
       objectReference: {fileID: 412658745}

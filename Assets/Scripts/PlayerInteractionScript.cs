@@ -9,6 +9,8 @@ public class PlayerInteractionScript : MonoBehaviour
     //To be removed.
     public TextMeshProUGUI testDragText;
 
+    [SerializeField] TextMeshProUGUI fuelText;
+
 
     [SerializeField] float walkingSpeed;
     [SerializeField] Rigidbody2D playerRb;
@@ -72,9 +74,17 @@ public class PlayerInteractionScript : MonoBehaviour
 
         float forceToAdd = Mathf.Clamp( Mathf.RoundToInt(draggedDistance/30), 1, 75);
 
+        if (forceToAdd < FuelCurrent)
+        {
+            forceToAdd = FuelCurrent;
+        }
+
         Vector3 dir = Quaternion.AngleAxis(angleForForce, Vector3.forward) * Vector3.right;
         testDragText.text = forceToAdd.ToString();
         playerRb.AddForce(-dir * forceToAdd, ForceMode2D.Impulse);
+
+        FuelCurrent -= forceToAdd;
+        fuelText.text = $"{FuelCurrent} / {FuelMax}";
 
     }
 
